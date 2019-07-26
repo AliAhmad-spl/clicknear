@@ -445,6 +445,7 @@ function closeNav() {
   <% else %>
   <a href="#" style="display: none;">Wishlist</a>
   <% end %>
+
   <% if current_user&.shop %>
    <%= link_to 'Manage Shop', current_user.shop %>
 
@@ -615,6 +616,10 @@ function closeNav() {
   <% else %>
   <a href="#" style="display: none;">Wishlist</a>
   <% end %>
+   <% if current_user&.shop %>
+   <%= link_to 'Order notifications', order_notification_index_path %>
+
+<% end %>
   <% if current_user&.shop %>
    <%= link_to 'Manage Shop', current_user.shop %>
 

@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 			# redirect_to  "/charges/new", locale: {order: @order}
 			if params[:order]
             	# redirect_to new_charge_path(:order => params[:order])
-            	redirect_to controller: 'charges', action: 'index', first_name: params[:order][:first_name],last_name: params[:order][:last_name],mobile_number: params[:order][:mobile_number],email: params[:order][:email],delivery_address: params[:order][:delivery_address],city: params[:order][:city],pincode: params[:order][:pincode],tracking: params[:order][:tracking], order_id: @order.id
+            	redirect_to controller: 'charges', action: 'index', user:params[:order][:user_id], first_name: params[:order][:first_name],last_name: params[:order][:last_name],mobile_number: params[:order][:mobile_number],email: params[:order][:email],delivery_address: params[:order][:delivery_address],city: params[:order][:city],pincode: params[:order][:pincode],tracking: params[:order][:tracking], order_id: @order.id
         	end
 		else
 			render:new
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit(:first_name, :las_name, :city, :state, :area, :quantity, :total, :mobile_number, :delivery_address, :email, :pincode, :tracking, repeat:[])
+		params.require(:order).permit(:first_name, :las_name, :city, :state, :area, :quantity, :total, :mobile_number, :delivery_address, :email, :pincode, :user_id, :tracking, repeat:[])
 	end
 
 end

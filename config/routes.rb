@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'order_notification/create'
+
+  get 'order_notification/index'
+
   get 'pages/homepage'
 
   resources :highlights
