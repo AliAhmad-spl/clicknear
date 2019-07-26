@@ -1,2 +1,62 @@
-<h1>OrderNotification#index</h1>
-<p>Find me in app/views/order_notification/index.html.erb</p>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+
+  </thead>
+
+  <tbody>
+    <% @products&.each do |product| %>
+      <tr>
+        <td><%= product&.name %></td>
+        <td><%= product&.price %></td>
+        <td><%= product&.description %></td>
+        <td><%= product&.image %></td>
+        <td><%= product&.imagetwo %></td>
+        <td><%= product&.imagethree %></td>
+        <td><%= product&.category %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+	
+<% if @notification != nil%>
+<%@notifications.each do |notice|%>
+<%notice.order.first_name%>+"have placed a order "+<%notice.order.items.first.product.name%>
+<%end%>
+
+<%else%>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<h1>
+
+
+
+
+
+
+
+
+
+It seems, You Do not have orders yet!!</h1>
+
+
+<%end%>
+</div>

@@ -3,5 +3,6 @@ class OrderNotificationController < ApplicationController
   end
 
   def index
+  	@notifications = OrderNotification.where(shop_id: current_user.shop.id)
   end
 end
