@@ -3,6 +3,7 @@ class Shop < ApplicationRecord
   mount_uploader :list, ListUploader
 	belongs_to :user
 	has_many :products
+  has_many :order_notifications
 	has_many :comments, dependent: :destroy
   has_many :reviews
 	belongs_to :registeration_number, required: false
