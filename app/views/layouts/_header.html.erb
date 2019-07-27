@@ -610,8 +610,10 @@ function closeNav() {
   <% end %>
 
   <% if current_user && current_user.is_agent? %>
-  <a href="/registeration_numbers"><i class="fas fa-users-cog" aria-hidden="true" style="padding-right:15px;"></i>Agent Panel</a>
-  <% end %>
+   
+   <%= link_to 'Agent Panel', agent_orders_path %>
+
+<% end %>
   <a href="/order_tracking"><i class="fas fa-truck" aria-hidden="true" style="padding-right:15px;"></i>Track Your Order</a>
   <% if current_user&.shop %>
   <a href="/products/new"><i class="fas fa-plus-circle" aria-hidden="true" style="padding-right:15px;"></i>Add Product</a>

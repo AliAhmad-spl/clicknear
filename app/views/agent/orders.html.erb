@@ -1,0 +1,33 @@
+<h2>Your orders</h2>
+<table class="table table-bordered">
+	<tr>
+		<th>Name of product</th>
+		<th>price</th>
+		<th>shop</th>
+		<th>category</th>
+		<th>description</th>
+		<th>brand</th>
+		<th>ram</th>
+		<th>storage</th>
+		<th>offerprice</th>
+	</tr>
+
+<% if @items.present? %>
+<%@items&.each do |order|%>
+	<tr>
+	<td><%=order.product.name%></td>
+	<td><%=order.product.price%></td>
+	<td><%=order.product.shop.name%></td>
+	<td><%=order.product.category%></td>
+	<td><%=order.product.description%></td>
+	<td><%=order.product.brand%></td>
+	<td><%=order.product.ram%></td>
+	<td><%=order.product.storage%></td>
+	<td><%=order.product.offerprice%></td>
+
+	</tr>
+<%end%>
+<%else%>
+<p>No orders Yet!!!</p>
+<%end%>
+</table>
