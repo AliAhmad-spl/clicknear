@@ -35,7 +35,7 @@ end
   get '/cart/tracking', to: 'orders#show', as: :tracking
   get '/order_tracking', to: 'orders#order_tracking'
   get '/order_status', to: 'orders#order_status'
-
+  get '/order_notification/order_details', to: 'order_notification#order_details'
 
   
   get 'welcome/home'
