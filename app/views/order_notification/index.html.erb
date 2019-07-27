@@ -1,0 +1,46 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+
+  </thead>
+
+  <tbody>
+    <% @products&.each do |product| %>
+      <tr>
+        <td><%= product&.name %></td>
+        <td><%= product&.price %></td>
+        <td><%= product&.description %></td>
+        <td><%= product&.image %></td>
+        <td><%= product&.imagetwo %></td>
+        <td><%= product&.imagethree %></td>
+        <td><%= product&.category %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+	
+
+
+<% if @notifications.present?%>
+	<%@notifications.each do |notice|%>
+		<p><%=notice&.order&.first_name%> have placed a order <%=notice&.order&.items&.first&.product&.name%></p>
+	<%end%>
+
+<%else%>
+<p>It seems, You Do not have orders yet!!</p>
+
+
+<%end%>

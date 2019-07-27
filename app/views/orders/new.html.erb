@@ -116,6 +116,12 @@
                                                         </div>
                                                     </div>
                                                         <div class="form-group">
+                                                            <div class="d-flex justify-content-between">
+                                                        
+                                                          <%= f.hidden_field :user_id, :class => 'lala', :value => current_or_guest_user&.id%>
+                                                        </div>
+                                                    </div>
+                                                        <div class="form-group">
                                                                 <div class="d-flex justify-content-between">
                                                          
                                                           <%= f.text_field :delivery_address, :class => 'lala', :value => current_or_guest_user.location, placeholder: "Complete Delivery Addresss" %>

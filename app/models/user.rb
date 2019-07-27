@@ -8,6 +8,7 @@ class User < ApplicationRecord
          has_one :shop, dependent: :destroy
          has_many :reviews, dependent: :destroy
          has_many :previews, dependent: :destroy
+         has_many :orders, dependent: :destroy
 	has_many :registeration_numbers
   acts_as_commontator
 
