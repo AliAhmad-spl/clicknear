@@ -2,6 +2,7 @@ class Shop < ApplicationRecord
 	mount_uploader :imageshop, ImageUploader
   mount_uploader :list, ListUploader
 	belongs_to :user
+  has_many :messages ,dependent: :destroy
 	has_many :products
   has_many :order_notifications
 	has_many :comments, dependent: :destroy

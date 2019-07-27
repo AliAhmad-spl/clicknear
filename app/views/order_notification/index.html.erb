@@ -35,8 +35,8 @@
 
 
 <% if @notifications.present?%>
-	<%@notifications.each do |notice|%>
-		<p><%=notice&.order&.first_name%> have placed a order <%=notice&.order&.items&.first&.product&.name%></p>
+<%@notifications.each do |notice|%>
+	<p><%=notice&.order&.first_name%> have placed a order <%=notice&.order&.items&.first&.product&.name%>|<%= link_to "details", order_notification_order_details_path(id:notice&.order&.id)%></p>
 	<%end%>
 
 <%else%>

@@ -1,0 +1,28 @@
+<h1>Products</h1>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>mobile</th>
+      <th>email</th>
+      <th>delivery address</th>
+    
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+      <tr>
+         <td><%= @orders.id%></td><td><%= @orders.first_name%></td><td><%= @orders.mobile_number%></td>
+         <td><%= @orders.email%></td><td><%= @orders.delivery_address%></td>
+      </tr>
+  
+  </tbody>
+</table>
+
+
+
+
