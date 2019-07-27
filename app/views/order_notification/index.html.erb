@@ -32,31 +32,15 @@
 
 
 	
-<% if @notification != nil%>
-<%@notifications.each do |notice|%>
-<%notice.order.first_name%>+"have placed a order "+<%notice.order.items.first.product.name%>
-<%end%>
+
+
+<% if @notifications.present?%>
+	<%@notifications.each do |notice|%>
+		<p><%=notice&.order&.first_name%> have placed a order <%=notice&.order&.items&.first&.product&.name%></p>
+	<%end%>
 
 <%else%>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<h1>
-
-
-
-
-
-
-
-
-
-It seems, You Do not have orders yet!!</h1>
+<p>It seems, You Do not have orders yet!!</p>
 
 
 <%end%>
-</div>
