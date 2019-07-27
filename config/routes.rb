@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/index'
+
   get 'order_notification/create'
 
   get 'order_notification/index'
