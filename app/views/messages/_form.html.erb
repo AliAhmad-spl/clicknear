@@ -47,7 +47,7 @@
 
   <div class="field">
     <%= form.label :message %>
-    <%= form.text_field :message, id: :message_message %>
+    <%= form.text_field :message, id: :message_message , class:"form-control"%>
   </div>
 
   <div class="field">
@@ -55,6 +55,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit("send" , class:"form-control") %>
   </div>
 <% end %>
