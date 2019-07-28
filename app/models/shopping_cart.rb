@@ -1,14 +1,15 @@
 class ShoppingCart
-
   delegate :sub_total, to: :order
 
-  def initialize(token:)
+  def initialize(token: ,user: )
     @token = token
+    @user = user
   end
 
   def order
     @order ||= Order.find_or_create_by(token: @token, status: 'cart') do |order|
       order.sub_total = 0
+      order.user_id = @user.id
     end
   end
 

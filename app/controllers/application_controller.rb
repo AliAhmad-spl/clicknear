@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user?
 
   def current_cart
-    @current_cart ||= ShoppingCart.new(token: cart_token)
+    @current_cart ||= ShoppingCart.new(token: cart_token ,user: current_user)
   end
   helper_method :current_cart
 
