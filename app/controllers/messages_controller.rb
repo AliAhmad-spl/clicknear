@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action  do
-  	@converstion = Converstion.find(params[:converstion_id])
+  	@converstion = Message.find_by_id!(params[:converstion_id]).converstion
   end
 
   def index
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params
+  def messages_params
   	params.require(:message).permit(:body, :user_id)
   end
 end

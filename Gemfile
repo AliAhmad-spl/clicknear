@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'devise-guests'
 gem 'pry'
 gem 'commontator', '~> 5.1.0'
+gem 'rubocop', '~> 0.73.0', require: false
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

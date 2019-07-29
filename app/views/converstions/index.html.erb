@@ -1,3 +1,46 @@
+
+
+<h2>Your orders</h2>
+<table class="table table-bordered">
+	<tr>
+		<th>Name of product</th>
+		<th>price</th>
+		<th>shop</th>
+		<th>category</th>
+		<th>description</th>
+		<th>brand</th>
+		<th>ram</th>
+		<th>storage</th>
+		<th>offerprice</th>
+	</tr>
+
+<% if @items&.present? %>
+<%@items&.each do |order|%>
+	<tr>
+	<td><%=order.product.name%></td>
+	<td><%=order.product.price%></td>
+	<td><%=order.product.shop.name%></td>
+	<td><%=order.product.category%></td>
+	<td><%=order.product.description%></td>
+	<td><%=order.product.brand%></td>
+	<td><%=order.product.ram%></td>
+	<td><%=order.product.storage%></td>
+	<td><%=order.product.offerprice%></td>
+
+	</tr>
+<%end%>
+<%else%>
+<p>No orders Yet!!!</p>
+<%end%>
+</table>
+
+<p> </p>
+<p> </p>
+<p> </p>
+
+<p> </p>
+
+
 <h1>All conversations</h1>
 <%@converstions.each do |converstion|%>
 	<% if converstion.sender_id == current_user.id || converstion.recipient_id == current_user.id%>
@@ -6,7 +49,7 @@
 	<%else%>
 	<% sender = User.find(converstion.sender_id)%>
 	<%end%>
-	<h3><%= link_to recipient.email, converstion_messages_path(converstion)%></h3>
+	<h3><%= link_to recipient&.email , converstion_messages_path(converstion)%></h3>
 	<%end%>
 	<%end%>
 
@@ -14,6 +57,6 @@
 
 	<%@users.each do |user|%>
 	 <% if user.id != current_user.id%>
-	 <h3><%= link_to user.email,converstions_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
+	 <h3><%= link_to user&.email,converstions_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
 	<%end%>
 	<%end%>

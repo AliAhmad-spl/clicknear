@@ -1,17 +1,43 @@
+
+
+
+<table class="table table-bordered">
+
+
+<% if @items.present? %>
+<%@items&.each do |order|%>
+	<tr>
+	<td><%=order.product.name%></td>
+	<td><%=order.product.price%></td>
+	<td><%=order.product.shop.name%></td>
+	<td><%=order.product.category%></td>
+	<td><%=order.product.description%></td>
+	<td><%=order.product.brand%></td>
+	<td><%=order.product.ram%></td>
+	<td><%=order.product.storage%></td>
+	<td><%=order.product.offerprice%></td>
+
+	</tr>
+<%end%>
+<%else%>
+
+<%end%>
+</table>
+
 <% @messages.each do |message|%>
 	<% if message.body %>
 		<% user = User.find(message.user_id)%>
-		<strong><%= user.email%></strong><%= message.message_tiem%>
-		<%= message.body%>
+		<p><strong><%= user.email%></strong><%= message.message_time%>
+		<%= message.body%></p>
 	<%end%>
 <%end%>
 
-<%= form_for(@converstion,@message) do |f|%>
+<%= form_for [@converstion,@message] do |f|%>
     <div class="form-group">
 		<%= f.text_area :body, class:"form-control"%>
 	</div>
 	<%= f.hidden_field :user_id, value:current_user.id%>
 	<div class="form-group">
-		<%= f.submit "send Reply", class:"form-control btn btn-primary"%>
+		<%= f.submit "send Reply", class:"form-control"%>
 	</div>
 <%end%>
