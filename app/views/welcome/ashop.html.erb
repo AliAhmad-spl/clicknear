@@ -60,8 +60,8 @@ function closeNav() {
 </script>
 <hr>
   <div class="row">
-                <% @shops.each do |shop| %>
-        <% if shop.area == current_or_guest_user.search_area %>
+                <% @shops&.each do |shop| %>
+      
                 <div class="col-md-4">
   <figure class="card card-product">
     <div class="img-wrap"><img src="<%= shop.imageshop %>" style="width:300px; height:250px;"></div>
@@ -79,7 +79,7 @@ function closeNav() {
   </figure>
 </div> <!-- col // -->
 <% end %>
-<% end %>
+
               </div>
 </div>
 
