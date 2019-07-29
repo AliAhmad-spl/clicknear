@@ -1,5 +1,6 @@
 <% if mobile_device == "mobile" %>
 <head>
+ 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,46 +71,7 @@ $(document).ready(function(){
                               
 
                                 <% if current_or_guest_user.search_area? %>
-                              <form class="form-wrap mt-4">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
-                                        </div>
-                              <input type="text" placeholder="What are you looking for?" id="search" class="btn-group1" style="color: #000;">
-                                       
-                                        
-                                        <a href="/welcome/search" class="btn-form search-btn" style="color: #fff;">SEARCH<i class="pe-7s-angle-right"></i></a>
-                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px; color: #fff;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
-                                      </div>
-                                      </form>
-
-                                        <% else %>
-                              <form class="form-wrap mt-4">
-                                  
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
-                                        </div>
-                                        
-                                        <input type="text" style="display:none; color: #000;" placeholder="What are you looking for?" id="search" class="btn-group1">
-                                       
-                                        
-                                        <a href="/welcome/search" class="btn-form search-btn" style="color: #fff;">Submit<i class="pe-7s-angle-right"></i></a>
-                                        
-                                    </div>
-                  </form>
+                       
                   <% end %>
 
 
@@ -143,6 +105,18 @@ $(document).ready(function(){
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+    .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 </style>
             
@@ -250,7 +224,6 @@ body {
   position: relative;
   background-color: #f2f2f2;
 }
-
 hr {
     display: block;
     margin-top: 0.5em;
@@ -260,39 +233,31 @@ hr {
     border-style: inset;
     border-width: 1px;
 }
-
-
 .blocky {
   background-color: #fff;
   margin-top: 5px;
 }
-
 img {
   border-radius: 15px;
 }
-
 nav .nav-link {
 color: #000;
 margin-left: .5rem;
 }
-
 nav .fa {
   font-size: 1rem;
   margin-right: 1rem;
 }
-
 nav span {
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
   margin-left: 10px;
 }
-
 .section-division {
   margin-top: 2rem;
   position: relative;
 }
-
 .section-division a .capta {
   position: absolute;
   top: 50%;
@@ -304,16 +269,13 @@ nav span {
   font-style: italic;
   font-weight: bold;
 }
-
 .img-fluid {
-
 }
 .img-fluid:hover {
     -ms-transform: scale(1.5); /* IE 9 */
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.1); 
   }
-
 </style>
 <!-- jQuery, Bootstrap JS. -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -324,7 +286,6 @@ nav span {
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
-
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
@@ -333,15 +294,10 @@ function closeNav() {
      <script>
         $(window).scroll(function() {
             // 100 = The point you would like to fade the nav in.
-
             if ($(window).scrollTop() > 100) {
-
                 $('.fixed').addClass('is-sticky');
-
             } else {
-
                 $('.fixed').removeClass('is-sticky');
-
             };
         });
         var selectedCity;
@@ -383,7 +339,6 @@ function closeNav() {
            $("select#city option").remove();
            //put in a empty default line
            // Fill city select
-
            var row = "<option value=\"" + "" + "\">" + "Select a city" + "</option>";
            $(row).appendTo("select#city");
            $.each(data, function(i, j) {
@@ -437,7 +392,6 @@ function closeNav() {
            $("select#area option").remove();
            //put in a empty default line
            // Fill city select
-
            var row = "<option value=\"" + "" + "\">" + "Select a area" + "</option>";
            $(row).appendTo("select#area");
            $.each(data, function(i, j) {
@@ -588,47 +542,20 @@ $(document).ready(function(){
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
                               <% if current_or_guest_user.search_area? %>
-                              <form class="form-wrap mt-4">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), id: "state"%>
-                                        </div>
-                                        <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper" style="display:none;">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area' %>
-                                        </div>
-                              <input type="text" placeholder="What are you looking for?" id="search" class="btn-group1">
-                                       
-                                        
-                                        <a href="/welcome/search" class="btn-form search-btn" style="color: #fff;">SEARCH<i class="pe-7s-angle-right"></i></a>
-                                        <a href="/welcome/ashop" class="btn-form search-btn" style="font-size:18px; color: #fff;">Shops Nearby<i class="pe-7s-angle-right"></i></a>
-                                      </div>
-                                      </form>
 
-                                        <% else %>
-                              <form class="form-wrap mt-4">
-                                  
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                      <div class="select-wapper">
-                                        <%= select_tag :state, options_for_select([["Select a state",""]] + State.all.map { |c| [c.name, c.id] },selected: current_or_guest_user.search_state ), required: true, id: "state"%>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :city, options_for_select([["Select a City",""]] + City.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_city), required: true, :id => 'city' %>
-                                        </div>
-                                        <div class="select-wapper">
-                                        <%= select_tag :area, options_for_select([["Select a Area",""]] + Area.all.map { |c| [c.name, c.id] }, selected: current_or_guest_user.search_area), :id => 'area', required: true %>
-                                        </div>
-                                        
-                                        <input type="text" style="display:none;" placeholder="What are you looking for?" id="search" class="btn-group1">
-                                       
-                                        
-                                        <a href="/welcome/search" class="btn-form search-btn" style="color: #fff;">Submit<i class="pe-7s-angle-right"></i></a>
-                                        
-                                    </div>
-                  </form>
-                  <% end %>
+                                  <%else%>
+                                    
+                                      <%= form_tag("welcome/ashop" ,method: "get") do %>
+                                   <% label_tag(:q) %>
+                                      <%= text_field_tag :q,"",placeholder:"Enter to State , city , area",class:"form-control mt-4 ",style:"margin:-30px;" %>
+
+                                      <%= submit_tag("submit",class:" btn-form" ,style:"margin-left:374px;    margin-top: -22px;") %>
+                                    <% end %>
+                                 
+        
+     
+
+                                       <% end -%>
                                 <div class="slider-link">
                                     <a href="/welcome/popular">Browse Popular</a><span>or</span> <a href="/welcome/recent">Recently Addred</a>
                                 </div>
@@ -901,7 +828,6 @@ $(document).ready(function(){
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
-
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
@@ -915,20 +841,14 @@ function closeNav() {
  <script>
         $(window).scroll(function() {
             // 100 = The point you would like to fade the nav in.
-
             if ($(window).scrollTop() > 100) {
-
                 $('.fixed').addClass('is-sticky');
-
             } else {
-
                 $('.fixed').removeClass('is-sticky');
-
             };
         });
         var selectedCity;
         $("select#state").change(function() {
-
           var id_value_string = $(this).val();
           console.log('id___________________', id_value_string);
           if (id_value_string == "") {
@@ -968,7 +888,6 @@ function closeNav() {
            $("select#city option").remove();
            //put in a empty default line
            // Fill city select
-
            var row = "<option value=\"" + "" + "\">" + "Select a city" + "</option>";
            $(row).appendTo("select#city");
            $.each(data, function(i, j) {
@@ -982,7 +901,6 @@ function closeNav() {
           }
          });
         }
-
         // on change city get area
         var selectedArea;
         $("select#city").change(function() {
@@ -1024,7 +942,6 @@ function closeNav() {
            $("select#area option").remove();
            //put in a empty default line
            // Fill city select
-
            var row = "<option value=\"" + "" + "\">" + "Select a area" + "</option>";
            $(row).appendTo("select#area");
            $.each(data, function(i, j) {

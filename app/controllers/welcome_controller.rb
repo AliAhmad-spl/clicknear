@@ -811,7 +811,11 @@ def hard1
     @shops = Shop.all
   end
   def ashop
-    @shops =Shop.all
+    search = params[:q] if params[:q].present?
+    @shops = Shop.where("name LIKE ? OR area LIKE ? OR city LIKE ? OR state LIKE ? OR category LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%", "%#{search}%") if params[:q].present?
+    unless @shops.present?
+       @shops = Shop.all
+     end 
   end
   def sshop
     @shops =Shop.all
