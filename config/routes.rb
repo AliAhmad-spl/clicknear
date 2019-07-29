@@ -3,11 +3,16 @@ Rails.application.routes.draw do
 
   get 'search/index'
 
+
   get 'order_notification/create'
 
   get 'order_notification/index'
 
   get 'pages/homepage'
+
+  resources :converstions do
+    resources :messages
+  end
 
   resources :highlights
   resources :previews
