@@ -22,7 +22,7 @@
   <br>
   <br>
 <div class="row" style="display: block;">
-  <% @shop.products.each do |product| %>
+  <% @shop&.products&.each do |product| %>
       <div class="kya">
 <div class="card">
 <div class="product-widget">
@@ -30,12 +30,12 @@
                     <img src="<%= product.image %>" alt="">
                   </div>
                   <div class="product-body">
-                    <p class="product-category"><%= product.category %></p>
-                    <h3 class="product-name"><a href="#"><%= product.name %></a></h3>
-                    <% if product.offerprice? %>
-                    <h4 class="product-price">₹.<%= product.offerprice %> <del class="product-old-price">₹.<%= product.price %></del></h4>
+                    <p class="product-category"><%= product&.category %></p>
+                    <h3 class="product-name"><a href="#"><%= product&.name %></a></h3>
+                    <% if product&.offerprice? %>
+                    <h4 class="product-price">₹.<%= product&.offerprice %> <del class="product-old-price">₹.<%= product&.price %></del></h4>
                     <% else %>
-                    <h4 class="product-price">₹.<%= product.price %></h4>
+                    <h4 class="product-price">₹.<%= product&.price %></h4>
                     <% end %>
                     <%= link_to "View Product", product, class: "btn btn-sm btn-primary float-right" %>
                   </div>
