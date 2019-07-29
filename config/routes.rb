@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   get 'agent/orders'
 
-  resources :messages
   get 'search/index'
+
 
   get 'order_notification/create'
 
   get 'order_notification/index'
 
   get 'pages/homepage'
+
+  resources :converstions do
+    resources :messages
+  end
 
   resources :highlights
   resources :previews
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
   resources :shops do
   resources :comments, only: [:create, :index, :destroy]
   resources :reviews, except: [:show, :index]
-  resources :conversations, only: [:index, :show, :destroy]
+  
 end
   # devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :products do

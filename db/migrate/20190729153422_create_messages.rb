@@ -1,11 +1,11 @@
 class CreateMessages < ActiveRecord::Migration[5.1]
   def change
     create_table :messages do |t|
-      t.integer :user_id
-      t.string :message
-      t.integer :shop_id
+    	t.text :body
+    	t.references :converstion, index: true
+    	t.references :user, index: true
 
-      t.timestamps
+    	t.timestamps 
     end
   end
 end

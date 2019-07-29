@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190727101209) do
+ActiveRecord::Schema.define(version: 20190729153422) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 20190727101209) do
     t.index ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
   end
 
+  create_table "converstions", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "highlights", force: :cascade do |t|
     t.string "title"
     t.string "image"
@@ -156,11 +163,13 @@ ActiveRecord::Schema.define(version: 20190727101209) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "converstion_id"
     t.integer "user_id"
-    t.string "message"
-    t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["converstion_id"], name: "index_messages_on_converstion_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

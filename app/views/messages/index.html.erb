@@ -1,31 +1,44 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Messages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Message</th>
-      <th>Shop</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.user_id %></td>
-        <td><%= message.message %></td>
-        <td><%= message.shop_id %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<table class="table table-bordered">
+
+
+<% if @items.present? %>
+<%@items&.each do |order|%>
+	<tr>
+	<td><%=order.product.name%></td>
+	<td><%=order.product.price%></td>
+	<td><%=order.product.shop.name%></td>
+	<td><%=order.product.category%></td>
+	<td><%=order.product.description%></td>
+	<td><%=order.product.brand%></td>
+	<td><%=order.product.ram%></td>
+	<td><%=order.product.storage%></td>
+	<td><%=order.product.offerprice%></td>
+
+	</tr>
+<%end%>
+<%else%>
+
+<%end%>
 </table>
+<div class="container-fluid" style="margin-top: 100px;">
+<% @messages.each do |message|%>
+	<% if message.body %>
+		<% user = User.find(message.user_id)%>
+		<p><strong><%= user.email%></strong><%= message.message_time%>
+		<%= message.body%></p>
+	<%end%>
+<%end%>
 
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+<%= form_for [@converstion,@message] do |f|%>
+    <div class="form-group">
+		<%= f.text_area :body, class:"form-control"%>
+	</div>
+	<%= f.hidden_field :user_id, value:current_user.id%>
+	<div class="form-group">
+		<%= f.submit "send Reply", class:"form-control"%>
+	</div>
+<%end%>
+</div>
