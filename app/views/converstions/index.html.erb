@@ -2,17 +2,7 @@
 
 <h2>Your orders</h2>
 <table class="table table-bordered">
-	<tr>
-		<th>Name of product</th>
-		<th>price</th>
-		<th>shop</th>
-		<th>category</th>
-		<th>description</th>
-		<th>brand</th>
-		<th>ram</th>
-		<th>storage</th>
-		<th>offerprice</th>
-	</tr>
+
 
 <% if @items&.present? %>
 <%@items&.each do |order|%>
@@ -30,7 +20,7 @@
 	</tr>
 <%end%>
 <%else%>
-<p>No orders Yet!!!</p>
+
 <%end%>
 </table>
 
@@ -39,6 +29,7 @@
 <p> </p>
 
 <p> </p>
+
 
 
 <h1>All conversations</h1>
@@ -53,10 +44,12 @@
 	<%end%>
 	<%end%>
 
-	<h1>All Users</h1>
+	<h1>All Shops</h1>
 
 	<%@users.each do |user|%>
 	 <% if user.id != current_user.id%>
-	 <h3><%= link_to user&.email,converstions_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
+	 <% if user.shop.present?%>
+	 <h3><%= link_to user&.shop.name,converstions_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
+	 <%end%>
 	<%end%>
 	<%end%>

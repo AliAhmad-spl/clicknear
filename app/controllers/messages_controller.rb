@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action  do
-  	@converstion = Message.find_by_id!(params[:converstion_id]).converstion
+  	@converstion = Converstion.find_by_id!(params[:converstion_id])
   end
 
   def index
@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
   def create
   		@message = @converstion.messages.new(messages_params)
   		if @message.save!
-  			redirect_to converstion_messages_path(@message)
+  			redirect_to converstion_messages_path(@message.converstion)
   		end
   end
 

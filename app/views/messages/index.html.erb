@@ -23,7 +23,7 @@
 
 <%end%>
 </table>
-
+<div class="container-fluid" style="margin-top: 100px;">
 <% @messages.each do |message|%>
 	<% if message.body %>
 		<% user = User.find(message.user_id)%>
@@ -41,3 +41,4 @@
 		<%= f.submit "send Reply", class:"form-control"%>
 	</div>
 <%end%>
+</div>
