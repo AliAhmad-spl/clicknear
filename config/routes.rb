@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'agent/orders'
 
-  resources :messages
   get 'search/index'
 
   get 'order_notification/create'

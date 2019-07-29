@@ -3,8 +3,7 @@ class Order < ApplicationRecord
 	has_many :products, through:  :items
 	has_many :order_notifications
 	belongs_to :user
-
-
+	
 	before_save do
 		self.repeat.gsub!(/[\[\]\"]/,"") if attribute_present?("repeat")
 	end
