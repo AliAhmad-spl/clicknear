@@ -5,13 +5,13 @@
   <%= select_tag 'q', options_for_select(User.all.collect{ |u| [u.username, u.id ] }),class:"form-control" %>
   <%= submit_tag("Generate code",class:"form-control") %>
 <% end %>
-Here will be the code to create shop:<%=@register&.code%>
+Here will be the code to create shop:<%= @register&.code%>
 
 
 <h2>Your orders</h2>
 <table class="table table-bordered">
 	<tr>
-		<th>Name of product</th>
+		<th>Name of the product</th>
 		<th>price</th>
 		<th>shop</th>
 		<th>category</th>
@@ -22,22 +22,23 @@ Here will be the code to create shop:<%=@register&.code%>
 		<th>offerprice</th>
 	</tr>
 
-<% if @items.present? %>
-<%@items&.each do |order|%>
+	<% if @items.present?%>
+	
+	<%@items.each do |notice|%>
 	<tr>
-	<td><%=order.product.name%></td>
-	<td><%=order.product.price%></td>
-	<td><%=order.product.shop.name%></td>
-	<td><%=order.product.category%></td>
-	<td><%=order.product.description%></td>
-	<td><%=order.product.brand%></td>
-	<td><%=order.product.ram%></td>
-	<td><%=order.product.storage%></td>
-	<td><%=order.product.offerprice%></td>
-
+		<td><%=notice&.order&.items&.first&.product&.name%></td>
+		<td><%=notice&.order&.items&.first&.product&.price%></td>
+		<td><%=notice&.order&.user&.shop&.name%></td>
+		<td><%=notice&.order&.items&.first&.product&.category%></td>
+		<td><%=notice&.order&.items&.first&.product&.description%></td>
+		<td><%=notice&.order&.items&.first&.product&.brand%></td>
+		<td><%=notice&.order&.items&.first&.product&.ram%></td>
+		<td><%=notice&.order&.items&.first&.product&.storage%></td>
+		<td><%=notice&.order&.items&.first&.product&.offerprice%></td>
 	</tr>
-<%end%>
+	<%end%>
 <%else%>
-<p>No orders Yet!!!</p>
+<p>It seems, You Do not have orders yet!!</p>
+
 <%end%>
 </table>
